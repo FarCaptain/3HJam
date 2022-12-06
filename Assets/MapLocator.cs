@@ -105,7 +105,10 @@ public class MapLocator : MonoBehaviour
     {
         if (m_Map.ContainsKey(coord))
         {
-            m_Map[coord].gameObject.SetActive(false);
+            //m_Map[coord].gameObject.SetActive(false);
+            var obj = m_Map[coord];
+            if (obj != null)
+                Destroy(m_Map[coord].gameObject);
             m_Map.Remove(coord);
         }
     }
@@ -117,5 +120,10 @@ public class MapLocator : MonoBehaviour
             return m_Map[coord];
         }
         return null;
+    }
+
+    public bool ContainsKey(Vector2Int coord)
+    {
+        return m_Map.ContainsKey(coord);
     }
 }

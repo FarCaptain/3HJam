@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Screen : MonoBehaviour
+public class BlackFold : MonoBehaviour
 {
-    Image image;
+    SpriteRenderer image;
     private void OnEnable()
     {
-        image = GetComponent<Image>();
+        image = GetComponent<SpriteRenderer>();
         Color c = image.color;
         image.color = new Color(c.r, c.g, c.b, 0f);
 
-        InvokeRepeating("fadeScreen", 12, 0.2f);
+        InvokeRepeating("fadeScreen", 5, 0.2f);
     }
 
     void fadeScreen()
@@ -23,5 +22,12 @@ public class Screen : MonoBehaviour
 
         if (alpha == 1f)
             CancelInvoke();
+    }
+
+    public void clearFold()
+    {
+        CancelInvoke();
+        Color c = image.color;
+        image.color = new Color(c.r, c.g, c.b, 0f);
     }
 }
