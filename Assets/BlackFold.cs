@@ -10,8 +10,12 @@ public class BlackFold : MonoBehaviour
         image = GetComponent<SpriteRenderer>();
         Color c = image.color;
         image.color = new Color(c.r, c.g, c.b, 0f);
+    }
 
-        InvokeRepeating("fadeScreen", 5, 0.2f);
+    public void startFold()
+    {
+        CancelInvoke();
+        InvokeRepeating("fadeScreen", 4, 0.2f);
     }
 
     void fadeScreen()
